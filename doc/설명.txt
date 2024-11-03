@@ -1,0 +1,176 @@
+[ SampleData.mjs ]
+
+차트 작성에 초기값으로 사용하기 위해 값과 목록 이름을 담은 data, 차트 작성시 CANVAS의 영역을 설정하기 위해 각 차트 별로 필요한 padding값을 JSON 형식으로 미리 저장하였다.
+
+
+
+- areaValue
+
+CANVAS의 영역을 설정하기 위한 paddings과 차트의 제목이나 값에 해당하는 y축의 눈금 간격 등의 text를 적기 위한 영역인 texts 등을 기입하였다.
+
+
+
+
+[ AddEvents.mjs ]
+
+코드 작성시 자주 필요한 addEventListener method를 작성할 때 더욱 더 편리하게 사용하기 위해 eventListener라는 커스텀 메소드로 만들어서 모듈로 작성하였다.
+
+eventListener 메소드에는 selector, eventAction, callback 파라미터가 들어간다.
+Selector - 이벤트 대상
+eventAction - click이나 resize와 같이 이벤트 행동
+callback - 실행 내용
+
+
+
+
+
+
+[ Queue.mjs ]
+
+Queue 클래스에는 배열에 요소를 push하는  pushItem, 배열의 요소를 shift하는 shiftItem,
+배열을 초기화 하는 initList 등의 method를 작성.
+
+
+
+
+
+
+[ AddEvents.mjs ]
+
+코드 작성시 자주 필요한 addEventListener method를 작성할 때 더욱 더 편리하게 사용하기 위해 eventListener라는 커스텀 메소드로 만들어서 모듈로 작성하였다.
+
+eventListener 메소드에는 selector, eventAction, callback 파라미터가 들어간다.
+Selector - 이벤트 대상
+eventAction - click이나 resize와 같이 이벤트 행동
+callback - 실행 내용
+
+
+
+
+
+
+
+[ Queue.mjs ]
+
+Queue 클래스에는 배열에 요소를 push하는  pushItem, 배열의 요소를 shift하는 shiftItem,
+배열을 초기화 하는 initList 등의 method를 작성.
+
+
+
+
+
+
+
+
+[ Abstract_Chart.mjs ]
+
+막대, 선, 원 차트 등의 차트를 작성할 때 쓰이는 공통적인 속성과 메소드를 따로 추상클래스에 모아서 작성하였다.
+
+아래와 같은 메소드를 작성하였다.
+
+setStrokeInit – 텍스트와 선의 색, 굵기 등을 설정 
+setFontInit - 텍스트의 크기, 정렬 을 설정
+makeQueue - SampleData의 data를 담을 queue를 생성 
+makeCanvas - Canvas를 생성
+modifyPosX - x축과 y축의 교점인 원점을 기준으로 x좌표를 보정
+modifyPosY - x축과 y축의 교점인 원점을 기준으로 y좌표를 보정
+drawAxis X축과 y축, 차트 타이틀를 작성 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ - constructor
+
+this.id : 각 차트의 이름
+this.parentNode : canvas가 들어갈 태그
+this.chartKinds : SampleData의  각 차트 값
+this.datas : SampleData의 data를 담을 queue 생성
+
+
+
+
+
+
+
+
+
+
+
+ - setStrokeInit, setFontInit
+ : 앞서 선언된 stroke관련, text관련 값들이 영향을 끼치는 것을 방지하기 위해 다시 설정
+
+ - makeQueue
+ : this.datas에 각 데이터들을 push해서 저장
+
+
+
+
+
+
+
+[ BarChart.mjs ]
+
+ - drawChart
+ : Abstract_Chart 클래스를 상속받아 this.datas를 파싱하여 막대 모양으로 차트를 생성
+
+ - makeChart
+ : drawChart의 내용대로 새로운 p5 객체를 생성
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[ LineChart.mjs ]
+
+ - drawChart
+ : Abstract_Chart 클래스를 상속받아 this.datas를 파싱하여 선 모양으로 차트를 생성
+
+ - makeChart
+ : drawChart의 내용대로 새로운 p5 객체를 생성
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[ PieChart.mjs ]
+
+ - drawChart
+ : Abstract_Chart 클래스를 상속받아 this.datas를 파싱하여 원 모양으로 차트를 생성
+
+ - makeChart
+ : drawChart의 내용대로 새로운 p5 객체를 생성

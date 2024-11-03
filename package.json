@@ -1,0 +1,20 @@
+{
+  "name": "teamproject_drawchart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch public/style:public/style",
+    "start": "node --trace-warnings index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql": "^2.18.1",
+    "pug": "^3.0.3",
+    "sass": "^1.77.2"
+  }
+}

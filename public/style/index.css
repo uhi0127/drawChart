@@ -1,0 +1,555 @@
+body, header, main, footer, nav, section, div, p, aside, article, a, img, h1, h2, h3, h4, h5, h6, address, form, fieldset, legend, input, button, select, option, textarea, table, tbody, thead, tfoot, caption, th, td, ol, ul, li, dl, dt, dd, figure, figcaption, blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  border: 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+address, em, i {
+  font-style: normal;
+}
+
+button, fieldset, select, input {
+  border: 0;
+}
+
+legend, caption, hr {
+  display: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.header {
+  width: 100%;
+  height: 90px;
+  background-color: #F7F9FA;
+  border-bottom: 1px solid #E7EBEE;
+  padding: 20px 100px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.header .header_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.header .header_container .titleImg {
+  width: 95px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: green;
+  background-image: url("../image/sendChart.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.header .header_container .titleImg .titleText_container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 15px;
+}
+.header .header_container .titleImg .titleText_container h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+.header .dataList {
+  min-width: 400px;
+  height: 100%;
+  margin-bottom: 3px;
+  margin-right: 3px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: -3px -3px 3px #277a91, 3px 3px 3px #1abc9c;
+}
+.header .dataList .dataListTitle {
+  display: inline-block;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.header .dataList .chart_history {
+  width: 230px;
+  border: 1px solid black;
+  padding: 15px 10px;
+}
+
+.form_container {
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  box-shadow: -3px -3px 3px #277a91, 3px 3px 3px #1abc9c;
+  overflow: hidden;
+  transition: width 0.4s;
+}
+.form_container.hide {
+  width: 0;
+}
+.form_container .chartForm {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  padding: 30px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+.form_container .chartForm > *:not(:last-child) {
+  margin-bottom: 30px;
+}
+.form_container .chartForm .chart_selector_container {
+  width: 100%;
+}
+.form_container .chartForm .chart_selector_container .chart_selector_container_title {
+  font-size: 1.2rem;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.form_container .chartForm .chart_selector_container .chart_selector_container_title .chart_selector_container_foldingBtn {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("../image/Arrow_up.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.form_container .chartForm .chart_selector_container .chart_selector_container_title .chart_selector_container_foldingBtn.folded {
+  background-image: url("../image/Arrow_down.svg");
+}
+.form_container .chartForm .chart_selector_container .chart_selector_container_title:has(.folded) ~ .chart_selector_container_button_container {
+  height: 0;
+}
+.form_container .chartForm .chart_selector_container .chart_selector_container_button_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  transition: height 0.4s;
+  overflow: hidden;
+  height: 56px;
+}
+.form_container .chartForm .chart_selector_container .chart_selector_container_button_container li {
+  width: 56px;
+  height: 56px;
+  border: 2px solid rgb(26, 188, 156);
+  border-radius: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.form_container .chartForm .chart_selector_container .chart_selector_container_button_container li input[type=radio] {
+  appearance: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.form_container .chartForm .chart_selector_container .chart_selector_container_button_container li:nth-child(1) input[type=radio] {
+  background-image: url("../image/bar.png");
+}
+.form_container .chartForm .chart_selector_container .chart_selector_container_button_container li:nth-child(2) input[type=radio] {
+  background-image: url("../image/line.png");
+}
+.form_container .chartForm .chart_selector_container .chart_selector_container_button_container li:nth-child(3) input[type=radio] {
+  background-image: url("../image/pie.png");
+}
+.form_container .chartForm .chartTitleLabel {
+  display: block;
+}
+.form_container .chartForm .chartTitleLabel .chartTitle {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+.form_container .chartForm .chartTitleLabel input {
+  width: 100%;
+  height: 40px;
+  font-size: 1rem;
+  padding: 5px;
+  box-sizing: border-box;
+  padding-left: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  display: block;
+}
+.form_container .chartForm .chartTitleLabel input:focus {
+  outline: none;
+}
+.form_container .chartForm .data_container .data_container_title {
+  font-size: 1.2rem;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.form_container .chartForm .data_container .data_container_title .data_container_foldingBtn {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("../image/Arrow_up.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.form_container .chartForm .data_container .data_container_title .data_container_foldingBtn.folded {
+  background-image: url("../image/Arrow_down.svg");
+}
+.form_container .chartForm .data_container .data_container_title:has(.folded) ~ .data_ul_container {
+  height: 0;
+}
+.form_container .chartForm .data_container .data_ul_container {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  transition: height 0.4s;
+}
+.form_container .chartForm .data_container .data_ul_container .commonUl_header {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  margin-top: 10px;
+  background-color: lightgray;
+  text-align: center;
+  padding: 5px 0;
+}
+.form_container .chartForm .data_container .data_ul_container .commonUl_header li {
+  width: 40%;
+  border-left: 1px solid black;
+  box-sizing: border-box;
+}
+.form_container .chartForm .data_container .data_ul_container .commonUl_header li.commonUl_id {
+  width: 20%;
+  border-left: none;
+}
+.form_container .chartForm .data_container .data_ul_container .commonUl_container {
+  width: 100%;
+  height: auto;
+  overflow: auto;
+}
+.form_container .chartForm .data_container .data_ul_container .commonUl_container .commonUl {
+  width: 100%; /* height:35px; */
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+}
+.form_container .chartForm .data_container .data_ul_container .commonUl_container .commonUl:not(:first-child) {
+  border-top: 1px solid black;
+}
+.form_container .chartForm .data_container .data_ul_container .commonUl_container .commonUl li {
+  width: 40%; /* height:20px; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  word-break: break-all;
+}
+.form_container .chartForm .data_container .data_ul_container .commonUl_container .commonUl li.commonUl_id {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: none;
+}
+.form_container .chartForm .data_container .data_ul_container .commonUl_container .commonUl li.commonUl_value {
+  justify-content: flex-start;
+}
+.form_container .chartForm .data_container .data_ul_container .commonUl_container .commonUl li.commonUl_value input {
+  width: calc(100% - 15px);
+}
+.form_container .chartForm .data_container .data_ul_container .commonUl_container .commonUl li input {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border-left: 1px solid lightgray;
+  box-sizing: border-box;
+  outline: none;
+}
+.form_container .chartForm .chart_controller {
+  width: 100%;
+}
+.form_container .chartForm .chart_controller .controller_container_title {
+  font-size: 1.2rem;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.form_container .chartForm .chart_controller .controller_container_title .controller_container_foldingBtn {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("../image/Arrow_up.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.form_container .chartForm .chart_controller .controller_container_title .controller_container_foldingBtn.folded {
+  background-image: url("../image/Arrow_down.svg");
+}
+.form_container .chartForm .chart_controller .controller_container_title:has(button.folded) ~ .controller_container .controller {
+  height: 0;
+}
+.form_container .chartForm .chart_controller .controller_container {
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+.form_container .chartForm .chart_controller .controller_container .controllerUl {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+  overflow-x: scroll;
+  padding-top: 10px;
+  box-sizing: border-box;
+}
+.form_container .chartForm .chart_controller .controller_container .controllerUl li {
+  box-sizing: border-box;
+  position: relative;
+  background: #1abc9c;
+  border-radius: 0 5px 5px 5px;
+}
+.form_container .chartForm .chart_controller .controller_container .controllerUl li label {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.form_container .chartForm .chart_controller .controller_container .controllerUl li label input {
+  appearance: none;
+}
+.form_container .chartForm .chart_controller .controller_container .controllerUl li::before {
+  content: "";
+  width: 20px;
+  height: 5px;
+  position: absolute;
+  top: -5px;
+  left: 0;
+  background: #1abc9c;
+  border-radius: 5px 5px 0 0;
+}
+.form_container .chartForm .chart_controller .controller_container .controller {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+  overflow: auto;
+  transition: height 0.4s;
+  border: 1px solid red;
+}
+.form_container .chartForm .chart_controller .controller_container .controller ol > li {
+  padding: 20px 20px 0px 10px;
+}
+.form_container .chartForm .chart_controller .controller_container .controller ol > li div {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  justify-content: flex-end;
+}
+.form_container .chartForm .chart_controller .controller_container .controller ol > li div label {
+  margin-left: 10px;
+}
+.form_container .chartForm .chart_controller .controller_container .controller ol > li div input[type=checkbox] {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  outline: 1px solid lightgray;
+  border: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+}
+.form_container .chartForm .chart_controller .controller_container .controller ol > li input[type=number] {
+  width: 50%;
+  font-size: 1rem;
+  padding: 5px;
+  box-sizing: border-box;
+  padding-left: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  display: block;
+  margin-top: 20px;
+}
+.form_container .chartForm .chart_controller .controller_container .controller ol > li input[type=color] {
+  background: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.form_container .chartForm .chart_controller .controller_container .controller ol > li:last-child {
+  padding: 20px 20px 20px 10px;
+}
+.form_container .chartForm .chartBtn_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.form_container .chartForm .chartBtn_container .chart_CRUD_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.form_container .chartForm .chartBtn_container .chart_CRUD_container button {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1abc9c;
+  border: 2px solid #1abc9c;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form_container .chartForm .chartBtn_container .chart_CRUD_container button.resetListBtn {
+  width: unset;
+  padding: 0 5px;
+  font-size: 1rem;
+}
+.form_container .chartForm .chartBtn_container .chart_CRUD_container button.saveBtn {
+  width: unset;
+  padding: 5px;
+}
+.form_container .chartForm .chartBtn_container > div {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+}
+.form_container .chartForm .chartBtn_container > div .chartBtn {
+  width: 130px;
+  height: 50px;
+  color: white;
+  background: #1abc9c;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 52px;
+}
+.form_container .chartForm .chartBtn_container > div .canvas_downlaod_container {
+  width: 200px;
+  height: 100%;
+  padding: 5px;
+  border: 1px solid rgb(26, 188, 156);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: white;
+  background: #1abc9c;
+}
+.form_container .chartForm .chartBtn_container > div .canvas_downlaod_container .canvas_download_container_title {
+  display: flex;
+  gap: 10px;
+}
+.form_container .chartForm .chartBtn_container > div .canvas_downlaod_container .canvas_download_container_title .downloadBtn {
+  display: block;
+  width: 18px;
+  height: 18px;
+  text-indent: -9999rem;
+  background-image: url("../image/download.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.form_container .chartForm .chartBtn_container > div .canvas_downlaod_container .canvas_download_container_inputBox {
+  display: flex;
+}
+.form_container .chartForm .chartBtn_container > div .canvas_downlaod_container .canvas_download_container_inputBox .canvas_download_filename {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+}
+.form_container .chartForm .chartBtn_container > div .canvas_downlaod_container .canvas_download_container_inputBox p {
+  display: flex;
+  align-items: flex-end;
+}
+.form_container .chartForm .chartBtn_container > div .canvas_downlaod_container .canvas_download_container_inputBox .canvas_file_extension {
+  border: 1px solid lightgray;
+}
+
+.canvas_container {
+  width: 100%;
+  height: 100%;
+  box-shadow: -3px -3px 3px #277a91, 3px 3px 3px #1abc9c;
+}
+
+.controlBox_foldingBtn_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.controlBox_foldingBtn_container .controlBox_foldingBtn {
+  width: 100%;
+  height: 100%;
+  padding: 10px 8px;
+  background-color: skyblue;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: "GmarketSansMedium";
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: calc(100vh - 120px);
+  padding: 50px 100px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  position: relative;
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,49 @@
+#container.container
+   #form_container.form_container
+      //- 차트 폼
+      form#chartForm.chartForm(action="/sample/data",method="POST")
+         //- 차트 선택
+         .chart_selector_container
+            //- h2
+            h2.chart_selector_container_title
+               span 차트 선택
+               button#chart_selector_container_foldingBtn.chart_selector_container_foldingBtn(type="button")
+
+            //- 차트 선택 radio
+            ul#chart_selector_container_button_container.chart_selector_container_button_container
+               -const chartKindsList = [ "bar", "line", "pie" ];
+                  for chartKinds in chartKindsList
+                     li: input(id=`chart_${chartKinds}`,type="radio",name="chartKind")
+            
+         //- 차트 제목 입력창
+         label.chartTitleLabel
+            h2.chartTitle 제목
+            input(type="text", name="chartTitle", value="" ,placeholder="차트 제목을 입력해주세요")
+         
+         //- 차트 데이터 입력창
+         #data_container.data_container
+            h2.data_container_title
+               span 데이터
+               button#data_container_foldingBtn.data_container_foldingBtn(type="button") 
+
+            #data_ul_container.data_ul_container
+               ul.commonUl_header
+                  li.commonUl_id No.
+                  li.commonUl_labels Labels
+                  li.commonUl_values Values
+               #commonUl_container.commonUl_container
+         
+         //- 차트 데이터 입력창 리스트 컨트롤 버튼
+         .chartBtn_container
+            //- 데이터 CRUD 버튼 
+            .chart_CRUD_container
+               -const btnList = [ {"idClass" : "addListBtn","text" : "&\plus;"}, {"idClass" : "deleteListBtn","text" : "\&minus;"}, {"idClass" : "resetListBtn","text" : "RESET"} ];
+                  for btn in btnList
+                     button( id=`${btn.idClass}`,class=`${btn.idClass}`,type="button")!= btn.text
+            div
+               //- 차트 생성 버튼
+               button#chartBtn.chartBtn(type="button") 차트 생성하기
+
+   //- 차트 그리는 영역
+   //- div 안에 canvas 생성하여 그린다.
+   #canvas_container.canvas_container
